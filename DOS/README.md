@@ -4,8 +4,8 @@
 The DOS module includes resources for setting up and configuring virtual DOS environments, including creating boot disks that serve as a bootstrapper for other operating systems such as Windows, Windows NT, OS/2, etc...
 
 ### Key Areas:
-- **DOS Boot Disk**: Instructions for creating a bootable DOS disk based on MS-DOS 5.0. This disk can be used to bootstrap various operating systems, making it an essential component for setup.
-- **MS-DOS 5.0**: Installation instructions and general tips for setting up MS-DOS 5.0 in a VirtualBox VM, which is necessary for creating the boot disk.
+- **DOS Boot Disk**: Instructions for creating a bootable DOS disk based on MS-DOS 5.0, essential for booting various operating systems.
+- **MS-DOS 5.0**: Installation instructions and tips for setting up MS-DOS 5.0 in a VirtualBox VM, necessary for boot disk creation.
 
 ## Prerequisites
 - Familiarity with DOS commands.
