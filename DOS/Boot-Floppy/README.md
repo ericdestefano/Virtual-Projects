@@ -53,11 +53,25 @@ Follow these steps to create a bootable floppy disk image that includes essentia
    copy c:\DOS\sys.exe a:\DOS
    ```
 
-6. **Copy the CD-ROM drivers, CONFIG.SYS, and AUTOEXEC.BAT files**:
+6a. **Edit `A:\CONFIG.SYS`**:
+   - Open `A:\CONFIG.SYS` in an editor (like `EDIT A:\CONFIG.SYS`).
+   - Change any paths pointing to `C:\` to point to `A:\` instead.
+
+   Example:
    ```shell
-   copy c:\cdrom\*.* a:\cdrom
-   copy c:\config.sys a:\
-   copy c:\autoexec.bat a:\
+   DEVICE=A:\CDROM\OAKCDROM.SYS /D:VMCD01
    ```
+
+6b. **Edit `A:\AUTOEXEC.BAT`**:
+   - Open `A:\AUTOEXEC.BAT` in an editor (like `EDIT A:\AUTOEXEC.BAT`).
+   - Update any paths from `C:\` to `A:\`.
+
+   Example:
+   ```shell
+   A:\cdrom\mscdex.exe /D:VMCD01
+   ```
+
+This will ensure the bootable floppy disk correctly references the CD-ROM drivers and any other needed files on the `A:\` drive.
+
 
 Your bootable floppy disk is now ready for use with essential utilities for setting up other operating systems.
