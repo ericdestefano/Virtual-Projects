@@ -6,7 +6,7 @@
 ** Use VBoxManage or the VirtualBox Manager GUI to make changes.
 -->
 <VirtualBox xmlns="http://www.virtualbox.org/" version="1.19-windows">
-  <Machine uuid="{7ce978b1-f37a-42ef-9af7-4f2ba403c303}" name="MS-DOS 5.0" OSType="DOS" snapshotFolder="Snapshots" lastStateChange="2024-10-10T19:17:25Z">
+  <Machine uuid="{7ce978b1-f37a-42ef-9af7-4f2ba403c303}" name="MS-DOS 5.0" OSType="DOS" snapshotFolder="Snapshots" lastStateChange="2024-10-11T09:16:35Z">
     <MediaRegistry>
       <HardDisks>
         <HardDisk uuid="{7d07ae58-6e2f-4c42-bdba-f07de25f301b}" location="MS-DOS 5.0.vdi" format="VDI" type="Normal"/>
@@ -15,11 +15,12 @@
         <Image uuid="{10c8d3af-ab78-4779-9d29-4a7afb7c8323}" location="Z:/Software/Operating Systems/DOS/MS-DOS/MS-DOS 5.00/msd500d1.img"/>
         <Image uuid="{affd5f3f-812c-46bf-a2ad-b6faa50e671b}" location="Z:/Software/Operating Systems/DOS/MS-DOS/MS-DOS 5.00/msd500d2.img"/>
         <Image uuid="{392a9bc9-ad24-4c7e-9e21-ad1ef6578d57}" location="Z:/Software/Operating Systems/DOS/MS-DOS/MS-DOS 5.00/msd500d3.img"/>
+        <Image uuid="{22ba0fd6-920f-4783-9fdf-55db07ea2db1}" location="CDROM Driver.img"/>
       </FloppyImages>
     </MediaRegistry>
     <ExtraData>
       <ExtraDataItem name="GUI/LastCloseAction" value="PowerOff"/>
-      <ExtraDataItem name="GUI/LastNormalWindowPosition" value="689,108,720,443"/>
+      <ExtraDataItem name="GUI/LastNormalWindowPosition" value="443,133,720,443"/>
     </ExtraData>
     <Hardware>
       <Memory RAMSize="4"/>
@@ -40,7 +41,12 @@
       <AudioAdapter controller="SB16" useDefault="true" driver="WAS" enabledOut="true"/>
       <Clipboard/>
       <GuestProperties>
-        <GuestProperty name="/VirtualBox/HostInfo/GUI/LanguageID" value="en_US" timestamp="1728587845400894300" flags="RDONLYGUEST"/>
+        <GuestProperty name="/VirtualBox/GuestAdd/GuiOnFocus" value="0" timestamp="1728639544597725000" flags="TRANSIENT, RDONLYGUEST"/>
+        <GuestProperty name="/VirtualBox/HostInfo/GUI/LanguageID" value="en_US" timestamp="1728723437842440200" flags="RDONLYGUEST"/>
+        <GuestProperty name="/VirtualBox/HostInfo/VBoxRev" value="164945" timestamp="1728638195334482802" flags="TRANSIENT, RDONLYGUEST"/>
+        <GuestProperty name="/VirtualBox/HostInfo/VBoxVer" value="7.1.2" timestamp="1728638195334482800" flags="TRANSIENT, RDONLYGUEST"/>
+        <GuestProperty name="/VirtualBox/HostInfo/VBoxVerExt" value="7.1.2" timestamp="1728638195334482801" flags="TRANSIENT, RDONLYGUEST"/>
+        <GuestProperty name="/VirtualBox/VMInfo/ResumeCounter" value="8" timestamp="1728639331180093700" flags="TRANSIENT, RDONLYGUEST"/>
       </GuestProperties>
       <StorageControllers>
         <StorageController name="Floppy" type="I82078" PortCount="1" useHostIOCache="true" Bootable="true">
