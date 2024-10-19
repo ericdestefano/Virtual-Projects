@@ -24,7 +24,7 @@ TAP interfaces operate at the data link layer (Layer 2) of the OSI model, allowi
 
 3. **Configure Networking**:
    - Make sure the TAP interfaces are properly configured in Windows.
-   - You may need to set their IP addresses manually if required.
+   - You can use **Wireshark** to monitor the traffic through the TAP interfaces. The VMware NAT interface will be responsible for routing, so ensure that it is configured correctly.
 
 4. **Bridge TAP Interfaces with VMware Workstation**:
    - Open VMware Workstation and navigate to `Edit` -> `Virtual Network Editor`.
