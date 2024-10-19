@@ -13,13 +13,12 @@ TAP interfaces operate at the data link layer (Layer 2) of the OSI model, allowi
 
 2. **Create TAP Interfaces**:
    - Open Command Prompt with administrative privileges.
-   - Use the following command to create multiple TAP interfaces:
+   - Use the following command to create multiple TAP interfaces by copying the existing one (`tap0901`):
      ```shell
-     tapinstall.exe install "C:\Program Files\TAP-Windows\bin\TAP-Windows6.sys" tap0901
-     tapinstall.exe install "C:\Program Files\TAP-Windows\bin\TAP-Windows6.sys" tap0902
-     tapinstall.exe install "C:\Program Files\TAP-Windows\bin\TAP-Windows6.sys" tap0903
-     tapinstall.exe install "C:\Program Files\TAP-Windows\bin\TAP-Windows6.sys" tap0904
-     tapinstall.exe install "C:\Program Files\TAP-Windows\bin\TAP-Windows6.sys" tap0905
+     devcon install "C:\Windows\System32\DRIVERS\tap0901.sys" tap0902
+     devcon install "C:\Windows\System32\DRIVERS\tap0901.sys" tap0903
+     devcon install "C:\Windows\System32\DRIVERS\tap0901.sys" tap0904
+     devcon install "C:\Windows\System32\DRIVERS\tap0901.sys" tap0905
      ```
 
 3. **Configure Networking**:
