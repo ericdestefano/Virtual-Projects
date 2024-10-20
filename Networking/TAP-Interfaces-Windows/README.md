@@ -25,7 +25,7 @@ The purpose of this setup is to use TAP interfaces in a bridge with another netw
        devcon install "C:\Windows\System32\DRIVERS\tap0901.sys" tap0905
        ```
    - **Renaming TAP Interfaces**:
-     - It is recommended to rename the TAP interfaces for better organization. You can rename them from **OpenVPN TAP-Windows6** and **OpenVPN TAP-Windows6 #1** to **TAP0**, **TAP1**, etc.
+     - It is recommended to rename the TAP interfaces for better organization. You can rename them from **OpenVPN TAP-Windows6** and **OpenVPN TAP-Windows6 #1** to **TAP0**, **TAP1**, etc...
 
 3. **Configure Networking**:
    - Make sure the TAP interfaces are properly configured in Windows.
