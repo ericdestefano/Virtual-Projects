@@ -1,5 +1,5 @@
 # TAP Interfaces for Windows
-![Network Interfaces](images/Network_Interfaces.png)
+![Network Interfaces](images/Network_Interfaces_List.png)
 
 ## Overview
 TAP (Terminal Access Point) interfaces are virtual network devices that provide a way to tunnel Ethernet frames. They are integral for using virtualization software like QEMU, Basilisk II, and SheepShaver for networking support.
