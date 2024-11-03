@@ -1,88 +1,108 @@
 # Mac OS 7.6.1 (68k) Setup with Basilisk II and TAP Interface Networking
 
+
+![Mac OS 7.6.1 Setup](images/Mac_OS_7.6.1_68k.PNG)
+
+
 ## Overview
 
-Mac OS 7.6.1, released in 1997, was a significant update for 68k-based Macintosh computers, marking the end of official support for 68k machines as Apple transitioned to PowerPC-only systems. Some key improvements over earlier versions, such as Mac OS 7.5, include:
-- Enhanced stability and performance, particularly on older machines.
-- Better peripheral and networking support, including **Open Transport** for more modern TCP/IP networking.
-- The shift from the "System" branding to the more familiar **Mac OS** branding, emphasizing the OS as a complete package.
+Mac OS 7.6.1, released in 1997, was a significant update for 68k-based Macintosh computers. Although it wasn’t the last OS version to support 68k Macs, it marked Apple’s shift to the "Mac OS" branding and introduced several system improvements, particularly in stability and networking.
 
 ### Key Changes from Mac OS 7.5/7.6
-- **Open Transport** networking replaces the older **MacTCP**, providing a modern TCP/IP stack that supports DHCP and better Ethernet integration.
-- Improved system utilities and better compatibility with external devices.
 
-This guide will walk you through setting up **Mac OS 7.6.1** on **Basilisk II**, an emulator for 68k-based Macs, and configuring networking using **TAP interfaces**. Make sure to read the [TAP Interfaces for Windows](#tap-interfaces-for-windows) section, as it provides critical steps for configuring TAP interfaces, which will allow your virtual Mac to connect to your network.
+- **Open Transport** replaces **MacTCP**, supporting modern networking protocols like DHCP.
+- Enhanced compatibility with newer peripherals and devices, especially through **Open Transport**.
+- Updated system utilities to improve functionality on 68k systems.
+
+This guide will walk you through setting up **Mac OS 7.6.1** on **Basilisk II**, configuring networking using **TAP interfaces**, and customizing installation components for optimized performance on the 68k architecture.
 
 ## Installation Steps
 
 ### 1. Basilisk II Configuration and ROM Selection
 
-We recommend using the **Quadra 700 ROM** for the best Ethernet support in **Basilisk II**. The Quadra 700 was one of the few 68k Macs with built-in Ethernet, which will simplify networking configuration later.
+For best Ethernet support in Basilisk II, I recommend the following ROM:
+
+**`1993-02 - F1ACAD13 - Quadra, Centris 610,650,800.ROM`**
+
+This ROM supports **AppleTalk** seamlessly. Other ROMs, like the **`1991-10 - 420DBFF3 - Quadra 700&900 & PB140&170.ROM`**, enable TCP/IP but may encounter errors with AppleTalk, especially on **Ethernet**. 
 
 #### Basilisk II Setup
-1. **Download and Install Basilisk II**: Ensure you have the latest version of Basilisk II.
+
+1. **Download and Install Basilisk II**.
 2. **ROM Selection**:
-   - Use the **Quadra 700 ROM** file. This can be obtained from legal archival sites.
-
-3. **Basilisk II Preferences**: Configure the following options for optimal performance:
-   - **System Preferences**: 
-     - Set the **Memory** to at least **16 MB** (or more, depending on your host system) for better performance with Mac OS 7.6.1.
-   - **CPU**: 
-     - Set the **CPU Type** to **68k** to ensure compatibility with Mac OS 7.6.1.
-     - Enable the **JIT (Just-In-Time) Compilation** option for faster processing if your system supports it.
-   - **Graphics**: 
-     - Set the **Screen Resolution** to **640x480** or **800x600** for better compatibility with classic applications. 
-     - Adjust the **Color Depth** to **32-bit** if your system can handle it for better visual fidelity.
+   - Use the **Quadra/Centris ROM** mentioned above.
+3. **Basilisk II Preferences**:
+   - **Volumes**:
+      - Add the **7.6.1 CD-ROM ISO** as bootable.
+      - Create and format a virtual hard disk during installation.
+   - **Graphics**:
+      - Set **Screen Resolution** to **800x600** at **60Hz**.
+      - Choose **32-bit color depth**.
    - **Sound**:
-     - Enable the **Sound** option to allow audio playback in applications that support it.
+      - Enable sound for basic audio support.
    - **Networking**:
-     - Set the **Ethernet** option to the **TAP interface** that you will configure as part of the networking setup.
-   - **Disk Options**:
-     - Use **CD-ROM** for installation and ensure it's set as bootable.
-     - You will format your virtual hard disk during the Mac OS 7.6.1 installation process. 
+      - Set **Ethernet** to the **TAP interface** you configure for networking.
+   - **Memory/Misc**:
+      - Allocate **16 MB** or more for optimal performance.
+      - Set **Mac Model ID** to **Quadra 900** and **CPU Type** to **68040**.
+      - Select the **Quadra ROM** file.
+4. **JIT Compiler**:
+   - Enable **JIT (Just-In-Time) Compilation** for faster processing if supported.
 
-### 2. Hard Disk Setup
+### 2. Installing Mac OS 7.6.1
 
-**Basilisk II** supports different disk image formats, including `.dsk` and `.hfv`. It may not natively support **qcow2** (which is more common with QEMU), but here’s what you can use:
+After booting from the ISO, follow these steps:
 
-- **Standard Disk Image (.dsk or .hfv)**: These are simple formats for mounting virtual hard drives in Basilisk II. They’re widely compatible and work well for most setups.
-- **If qcow2 support is available** (though rare in Basilisk II), it would provide:
-  - **Disk compression**: Saving storage space by compressing unused disk blocks.
-  - **Snapshot support**: If you want to roll back to a previous state easily.
-  For most users, sticking with `.dsk` or `.hfv` should be fine unless you’re experimenting with disk image formats.
+1. **Initialize** the virtual disk.
+2. **Run the Install Mac OS** program.
+3. Choose **Option 4** to **Install the Software**.
+4. Select the virtual disk you initialized, then click **Install Now**.
+5. **Customize the Installation** (click "Customize") to access **Easy Install** and **Custom Install** options.
 
-### 3. Installing Mac OS 7.6.1
+#### Recommended Customization
 
-- Boot from the **Mac OS 7.6.1** CD-ROM in Basilisk II.
-- Follow the on-screen prompts to begin the installation.
-  - During the installation process, you will be prompted to format your virtual hard disk image using **Mac OS Standard (HFS)**.
-  - **Installation Options**:
-    - Choose **Easy Install** to ensure all necessary components are installed.
-    - **Do not install PowerPC-specific components**, as they won’t be used in the 68k emulator.
-    - Ensure that **Open Transport** is installed, as it will handle both **AppleTalk** and **TCP/IP** for networking.
-    - Exclude any unnecessary printer drivers or utilities if not needed, to save space.
+- **Easy Install** is recommended, as micromanaging options often leaves unnecessary or incompatible components.
+   - **Uncheck** PowerPC-specific options, such as **OpenDoc** and **QuickDraw 3D**.
+   - Optionally, uncheck **MacLink Plus** if not needed.
+   - For AppleTalk and TCP/IP, ensure **Open Transport** is installed.
+
+6. **Start Installation**.
+   - After completing the installation, **shut down** instead of rebooting to avoid crashes.
+7. **Boot into Mac OS 7.6.1**:
+   - Go to the **Apple Icon** -> **Control Panels** -> **Monitor**.
+   - Set **Colors** from **Greys** to **Millions** for full color support.
+
+### 3. Custom Install Options Overview
+
+Below is a list of key **Custom Install** options, detailing the components, platforms they support, and their relevance for 68k:
+
+| Component           | Platform Compatibility | Description |
+|---------------------|------------------------|-------------|
+| **Open Transport**  | 68k & PowerPC          | Provides advanced networking with support for TCP/IP and AppleTalk. Essential for 68k networking. |
+| **OpenDoc**         | PowerPC Only           | A document management component. Not required for 68k; deselect this to save resources. |
+| **QuickDraw 3D**    | PowerPC Only           | Provides 3D graphics support. Deselect for 68k, as it’s incompatible. |
+| **MacLink Plus**    | 68k & PowerPC          | Document conversion utility. Optional; useful if transferring documents from non-Mac formats. |
+| **Printer Drivers** | 68k & PowerPC          | Install only if you plan to use a printer in the emulated environment. |
+| **PC Exchange**     | 68k & PowerPC          | Adds support for DOS/Windows disks, allowing read/write access. Useful if transferring files from DOS-based systems. |
 
 ### 4. Networking Configuration
 
-Once **Mac OS 7.6.1** is installed, configure networking to allow the system to communicate with the outside network:
+After installation, configure network settings:
 
-- **AppleTalk Configuration**:
-  - Open the **AppleTalk** control panel.
-  - Select **Ethernet** as the primary connection method.
+- **AppleTalk**:
+   - Open **AppleTalk** control panel.
+   - Select **Ethernet** as the connection method.
   
-- **TCP/IP Configuration**:
-  - Open the **TCP/IP** control panel.
-  - Ensure that **Open Transport** is selected.
-  - If your network uses **DHCP**, select **Using DHCP Server** to automatically obtain an IP address.
-  - Alternatively, manually enter the network details (IP address, subnet mask, router address) based on your TAP interface setup.
+- **TCP/IP**:
+   - Open **TCP/IP** control panel.
+   - Select **Open Transport**.
+   - Choose **Using DHCP Server** if your network supports DHCP.
+   - Alternatively, manually enter IP configuration if DHCP isn’t available.
 
 ### 5. Testing Network Connectivity
 
-Mac OS 7.6.1 does not come with built-in utilities like `ping` to test network connectivity, so testing might require you to install a third-party tool (such as **MacTCP Watcher**) or set up file sharing to test AppleTalk and TCP/IP functionality:
-
-- **AppleTalk**: Verify that network services or file sharing over AppleTalk are functioning correctly by trying to access any available network shares.
-- **TCP/IP**: You can test connectivity by attempting to browse the web using an old browser (such as Netscape Navigator), though note that modern websites may not render correctly due to the outdated software.
+Mac OS 7.6.1 lacks built-in tools like `ping`, so you may want to install third-party network utilities (e.g., **MacTCP Watcher**). You can also verify AppleTalk by accessing available network shares.
 
 ## Final Notes
 
-This guide assumes that you are familiar with basic networking principles and that you have configured **TAP interfaces**. With this setup, you can provide your virtual Mac OS 7.6.1 system full network connectivity, allowing it to interact with both AppleTalk and TCP/IP networks while isolating it from the host machine.
+This guide assumes familiarity with **TAP interfaces** and basic network setup. With this setup, your virtual Mac OS 7.6.1 will support AppleTalk and TCP/IP, enabling it to connect to your local network through **Basilisk II**.
