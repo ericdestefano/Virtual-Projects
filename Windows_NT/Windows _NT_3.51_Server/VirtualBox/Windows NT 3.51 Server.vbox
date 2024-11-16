@@ -27,7 +27,7 @@
     </ExtraData>
     <Snapshot uuid="{59ec338f-8a01-4895-ba47-d13609f362e7}" name="Before Video Driver" timeStamp="2024-11-16T09:09:06Z">
       <Hardware>
-        <Memory RAMSize="64"/>
+        <Memory RAMSize="128"/>
         <Display VRAMSize="16"/>
         <Firmware/>
         <BIOS>
