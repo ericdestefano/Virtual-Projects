@@ -71,22 +71,21 @@ To set up Windows NT 3.51 Server, we will use an MS-DOS 5.0 boot disk. This disk
 The Windows NT 3.51 Server CD-ROM is organized into folders, each containing installation files for different CPU architectures, showcasing NT’s cross-platform flexibility:
 - **i386**: For Intel x86 architecture, which we’re using in VirtualBox.
 - **Alpha**: For the Alpha CPU, known for high performance.
-- **PPC (PowerPC)**: For PowerPC architecture, used in Apple Power Macs.
+- **PPC (PowerPC)**: For PowerPC architecture, used in Apple Power Macs and IBM's RS/6000 series.
 - **MIPS**: For MIPS architecture, optimized for specific tasks.
 
 For our setup, we’ll use only the `i386` folder.
-
 ### Installation Methods
-Switch to the `i386` directory:
-```bash
+Assuming your current select drive in DOS is the CD-ROM drive, switch to the `i386` directory:
 CD i386
+
 #### Option 1: `winnt /ox` to Create Boot Disks
 Running `winnt /ox` will create three boot disks, useful for systems that can't boot directly from the CD-ROM. You’ll need three formatted 3.5-inch floppy images for this method.
 
 #### Option 2: `winnt /b` for a Floppyless Installation
 The `winnt /b` command skips the need for boot disks entirely. This makes setup faster and is ideal for virtual environments, where floppy disks aren’t necessary.
 
-## 6) Windows NT 3.51 Server Setup
+## 6. Windows NT 3.51 Server Setup
 
 Now that you've used either the `winnt /ox` method to create boot disks or the `winnt /b` method for a floppyless installation, you'll be greeted by the **Windows NT Server setup screen**.
 
