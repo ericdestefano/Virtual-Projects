@@ -1,6 +1,6 @@
 # OS X 10.11 Setup in VMWare Workstation Pro
 
-![OS X 10.11 VMware](images/OSX1011.PNG)
+![OS X 10.11 VMware](images/OS_X_10_11.PNG)
 
 ### 1. Personal History
 With its release on September 30, 2015, OS X 10.11 El Capitan arrived just as a new school year was in full swing, continuing Apple’s pattern of fall launches since Mac OS X 10.5 (Leopard). Given my work in an educational setting, I was likely intrigued by its features but focused on the demands of the season rather than the latest OS release.
