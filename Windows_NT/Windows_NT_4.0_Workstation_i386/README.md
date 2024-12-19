@@ -12,11 +12,7 @@ Its packaging wasn’t just functional; it was striking. Windows 95’s iconic b
 
 For me, it was more than just software. It was a bold statement, a call to step into the future. The box, the promise, the possibilities—it wasn’t just something you bought; it was something you aspired to be part of.
 
-This release of NT was also a turning point for its audience. For businesses, it was the first NT release to seriously contend with desktops and workstations, despite its higher hardware requirements, which included:
-
-- **Minimum Specs:** 8 MB of RAM, 486 processor.
-- **Recommended Specs:** At least 16 MB of RAM and a Pentium processor.
-- **Practical Reality:** Many systems at the time were underpowered. Even new business systems with 8 MB of RAM often required costly upgrades to handle NT's demands, especially for multitasking and running advanced applications.
+This release of NT was also a turning point for its audience. For businesses, it was the first NT release to seriously contend with desktops and workstations, despite its higher hardware requirements.
 
 For personal users, it was an intriguing choice, offering stability and a professional edge, but lacking some of the user-friendly features and broader hardware support that Windows 95 offered, such as:
 
@@ -475,9 +471,9 @@ Service Pack 6a was the final update for Windows NT 4.0 and included critical bu
 
 ---
 
-#### Understanding Encryption in Windows NT 4.0  
+### Understanding Encryption in Windows NT 4.0  
 
-##### 64-bit vs. 128-bit Encryption:  
+64-bit vs. 128-bit Encryption:  
 The terms **64-bit** and **128-bit** in this context refer to the strength of encryption protocols used for securing online communications and file transfers. This distinction is most apparent in Internet Explorer (IE) and certain system components, such as SSL/TLS encryption libraries.
 
 - **64-bit encryption:**  
@@ -488,7 +484,7 @@ The terms **64-bit** and **128-bit** in this context refer to the strength of en
 
 ---
 
-##### How to Check Your Encryption Strength  
+### How to Check Your Encryption Strength  
 
 To determine whether your system is using 64-bit or 128-bit encryption:  
 1. Open **Internet Explorer** (included with Windows NT 4.0).  
@@ -499,7 +495,7 @@ To determine whether your system is using 64-bit or 128-bit encryption:
 
 ---
 
-##### Misconceptions About Encryption in Windows NT 4.0  
+#### Misconceptions About Encryption in Windows NT 4.0  
 
 It’s important to note that encryption strength in Windows NT 4.0 is tied to **networking and online communication protocols**, not to file sharing or the NTFS file system.  
 
@@ -511,7 +507,7 @@ Users familiar with modern systems might assume this affects internal file secur
 
 ---
 
-##### Why Choose 128-Bit Encryption?  
+### Why Choose 128-Bit Encryption?  
 
 In the late 1990s, **128-bit encryption** became critical for secure communications, especially in financial and enterprise settings. While it offers no practical benefits for file sharing or local operations, it ensures stronger encryption for tasks like:  
 
@@ -523,7 +519,7 @@ In a modern virtual lab, however, this distinction is mostly irrelevant. Virtual
 
 ---
 
-##### How to Upgrade to 128-Bit Encryption  
+### How to Upgrade to 128-Bit Encryption  
 
 If your system currently uses 64-bit encryption and you want to enable 128-bit:  
 1. **Download the High Encryption Pack** for Windows NT 4.0 from a trusted archive source.  
@@ -532,7 +528,7 @@ If your system currently uses 64-bit encryption and you want to enable 128-bit:
 3. Reboot the system to apply changes.  
 
 
-#### Recommendations for Installing Service Packs
+### Recommendations for Installing Service Packs
 
 To ensure the best experience with Windows NT 4.0 Workstation:
 
@@ -542,7 +538,7 @@ To ensure the best experience with Windows NT 4.0 Workstation:
 
 With a fully updated system, you’re ready to proceed with additional tasks, such as installing drivers, configuring options, and exploring the advanced features of Windows NT 4.0.
 
-#5. Drivers  
+# 5. Drivers  
 
 To further enhance the productivity and usability of Windows NT 4.0 Workstation, we will add two essential drivers—display and sound.  
 
@@ -605,10 +601,7 @@ Adding sound enhances the experience by enabling audio feedback for errors, conf
 
 ---
 
-#### Notes on Legacy Hardware Configuration  
+### Notes on Legacy Hardware Configuration  
 
 **Why Manually Configure Resources?**  
-In the era of Windows NT 4.0, Plug and Play technology was still in its infancy. Sound cards like the Sound Blaster 16 relied on 16-bit ISA bus architecture, which did not support automatic resource allocation. Users had to manually assign I/O addresses, IRQs, and DMA channels to avoid conflicts.  
-
-**Why No 32-bit Sound Cards Yet?**  
-The transition to 32-bit sound cards was delayed due to the dominance of ISA-based hardware and the slower adoption of PCI for sound cards. By 1998–2000, PCI-based 32-bit cards became more common, but they required drivers and software tailored for advanced architectures, which Windows NT 4.0 could still handle effectively.
+In the era of Windows NT 4.0, Plug and Play technology was still in its infancy. Sound cards like the Sound Blaster 16 relied on 16-bit ISA bus architecture, which did not support automatic resource allocation. Users had to manually assign I/O addresses, IRQs, and DMA channels to avoid conflicts.
