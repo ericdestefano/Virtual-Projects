@@ -2,7 +2,9 @@
 
 > *Captain's log, stardate 54274.7. Lieutenant Torres has finally convinced me that I can't put off a major maintenance overhaul any longer.*
 
-Inherited systems are a pillar of enterprise life—echoes of decisions made decades ago, back when the future of networking was supposedly Ethernet running TCP/IP in a Token Ring/IPX-SPX world.
+The challenge with legacy systems isn’t just technical—it’s historical. You’re inheriting infrastructure shaped by people, policies, and priorities that may no longer exist, but still underpin large parts of the infrastructure we depend on.
+
+Inherited systems are a pillar of enterprise life—echoes of decisions made decades ago, from a time when Ethernet and TCP/IP were the future—but the operational landscape was still built around Token Ring and IPX/SPX.
 
 Fast-forward to today, and one such relic is a fleet of database servers that have run uninterrupted for far too long. Then something happened. My file server cluster experienced a failure.
 
