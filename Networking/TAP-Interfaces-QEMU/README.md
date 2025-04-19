@@ -26,3 +26,22 @@ The script is structured clearly and breaks down into the following sections:
 - **Function to check if the TAP interface already exists, and create it if not**
 - **Function to check if the BRIDGE interface already exists, and create it if not**
 - **Launch QEMU**
+
+---
+
+### Post-Flight Notes
+
+This project was originally going to be centered around **NetworkManager** and `nmcli`. I’ve been in a Fedora mode lately, and the idea—at least in concept—was to do things the *Red Hat/Fedora way* by leaning into NetworkManager for everything.
+
+At first, things looked good.
+
+- Create a TAP interface? No problem.  
+- Bridge that TAP interface to a VMware Workstation interface? No deal.
+
+The issue was simple, but frustrating: **on a Linux system with NetworkManager, it wants to be in charge.** If we’re just talking about your primary NIC or a Wi-Fi adapter, this is easy peasy. But the moment I tried working with interfaces that existed *outside* its ecosystem—like a TAP interface or VMware’s `vmnet8`—things broke down.
+
+My goal was to bridge a NetworkManager-controlled interface with interfaces outside of its control. That turned out to be impossible without getting into increasingly ugly workarounds or sacrificing control.
+
+The core problem lies in how NetworkManager abstracts and manages devices. While it can create bridges and add ports, it insists on full ownership of both the bridge and any participating interfaces. External interfaces like `vmnet8` (owned by VMware Workstation) don’t register cleanly within NetworkManager’s internal model, making them effectively invisible or off-limits. NetworkManager operates under the assumption that it exclusively controls all devices it manages—via its internal state tracking and D-Bus interface—and it will not integrate unmanaged or externally created interfaces into its dependency chain or device lifecycle logic.
+
+Which, sadly, meant that despite becoming pretty fluent with `nmcli` syntax, I had to fall back to the **`ip`** CLI and **`brctl`**. In the end, this made for a more universal script—one not geared toward NetworkManager-based systems.
