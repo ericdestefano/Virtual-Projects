@@ -1,5 +1,7 @@
 # Windows XP Pro x64
 
+![Windows XP Professional x64 Edition](images/WinXPP_x64.png)
+
 ## 1. Personal History
 
 My relationship with Windows during this period felt a bit like drifting away from a favorite band - not falling out of love, just wanting to explore other genres.
@@ -13,43 +15,43 @@ I didn’t spend much time with the x64 variant until 2023, when I started explo
 
 ## 2. Technical Changelog with 2005 User Perspective
 
-## Windows Server 2003 Kernel (NT 5.2)
+### Windows Server 2003 Kernel (NT 5.2)
 
 Windows XP x64 wasn’t just a bigger version of XP. It was built on the Windows Server 2003 kernel—NT 5.2—not the older NT 5.1 kernel from the original 32-bit XP. This meant you were standing on server-grade foundations, whether you realized it or not. While 32-bit XP was designed to feel like a consumer OS, XP x64 carried all the behind-the-scenes improvements from Microsoft’s enterprise server platform. Stability, memory handling, and security were all tighter right out of the box. Even if you never touched a server, you were now running the same core that powered them.
 
-## Expanded Memory Support
+### Expanded Memory Support
 
 One of the headline features was RAM support. 32-bit XP could address up to 4 GB of memory, but most systems could only actually use about 3.5 GB due to hardware limitations. XP x64 blew past that ceiling, supporting up to 128 GB of RAM. For most users in 2005, that number sounded ridiculous—but for anyone doing video editing, 3D modeling, virtualization, or handling massive datasets, it changed the game. You could build a workstation that felt like it had no limits. XP x64 was where your hardware finally started to breathe.
 
-## Processor and Thread Scaling
+### Processor and Thread Scaling
 
 XP x64 also lifted processor limits. The 32-bit version supported up to 32 logical processors, which was already more than enough for most people. But XP x64 doubled that to 64. Around 2005, multi-core CPUs like the AMD Athlon 64 X2 and Intel Pentium D were hitting the market. XP x64 could see every thread, every core, and scale with the hardware you were just starting to buy. If you were on the cutting edge, this was the OS that could actually keep up.
 
-## Volume Shadow Copy Service (VSS)
+### Volume Shadow Copy Service (VSS)
 
 Borrowed from Windows Server 2003, Volume Shadow Copy Service allowed XP x64 to take live snapshots of files—even while they were open and in use. This wasn’t something you’d see as a casual user, but if you used backup software that supported VSS, it meant you could back up your work without closing your applications. It brought server-grade data protection to your desktop, something 32-bit XP just didn’t have.
 
-## Upgraded Web Server - IIS 6.0
+### Upgraded Web Server - IIS 6.0
 
 If you did any kind of web development or hosted local web apps, XP x64 upgraded you from IIS 5.1 to IIS 6.0. This was the same version shipping on Windows Server 2003, not a stripped-down consumer edition. It was faster, more secure, and more standards-compliant. For developers, this made XP x64 a serious platform for local testing and even small-scale hosting.
 
-## Media Player 10 Built-In
+### Media Player 10 Built-In
 
 XP x64 shipped with Windows Media Player 10, offering the latest media playback features, including updated DRM support for purchased digital media. While not a headline feature for power users, it meant XP x64 came with Microsoft's latest media stack by default, keeping you in step with the digital media landscape of the mid-2000s.
 
-## Remote Desktop Enhancements
+### Remote Desktop Enhancements
 
 XP x64 brought improvements to Remote Desktop, including Unicode keyboard support, client-side time-zone redirection, and better rendering performance. For IT professionals or anyone working remotely, these changes made managing multiple machines or working across different locations smoother and more reliable.
 
-## WOW64 Subsystem for 32-bit Applications
+### WOW64 Subsystem for 32-bit Applications
 
 One of the biggest compatibility questions in 2005 was whether your existing software would run. XP x64 included the WOW64 (Windows-on-Windows 64-bit) subsystem, allowing most 32-bit applications to run without issue. However, it dropped support for 16-bit applications entirely. That meant older DOS and Windows 3.x programs were no longer supported, cutting off a long tail of legacy software. For most users, this wasn’t a big deal—but for specialized business tools or retro gamers, it mattered.
 
-## Mandatory 64-bit Driver Support
+### Mandatory 64-bit Driver Support
 
 XP x64 required native 64-bit drivers. 32-bit drivers were not compatible. This was one of the biggest hurdles for users in 2005. Hardware vendors were slow to release 64-bit drivers for many consumer devices like printers, webcams, and sound cards. If your device didn’t have a 64-bit driver, it simply wouldn’t work. For enthusiasts and early adopters, this meant double-checking hardware compatibility before making the jump.
 
-## Program Files Directory Split
+### Program Files Directory Split
 
 To manage compatibility with both 32-bit and 64-bit applications, XP x64 introduced two separate Program Files directories:
 - Program Files for native 64-bit apps.
@@ -57,15 +59,15 @@ To manage compatibility with both 32-bit and 64-bit applications, XP x64 introdu
 
 This structure would go on to become standard in later versions of Windows, but XP x64 was where it started.
 
-## Kernel Patch Protection (PatchGuard)
+### Kernel Patch Protection (PatchGuard)
 
 XP x64 introduced Kernel Patch Protection, also known as PatchGuard. This feature blocked third-party software and malware from making unauthorized modifications to the Windows kernel. While this improved security, it also broke compatibility with some low-level tools like antivirus or virtualization software that depended on hooking into the kernel. It was Microsoft drawing a line in the sand to protect the OS at its core.
 
-## IPSec Networking Improvements
+### IPSec Networking Improvements
 
 Inherited from Windows Server 2003, XP x64 brought advanced IPSec (Internet Protocol Security) features to the desktop. This made setting up secure VPNs, encrypted communications, and network policies more reliable and robust, borrowing directly from enterprise-grade networking features.
 
-## Different Service Pack Timeline
+### Different Service Pack Timeline
 
 Because XP x64 was based on Windows Server 2003, it followed the server’s update and service pack schedule, not the consumer XP schedule. This meant:
 - It launched with many of the features that 32-bit XP wouldn’t get until Service Pack 2.
