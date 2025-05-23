@@ -1,4 +1,4 @@
-# Windows XP Pro x64
+# Windows XP Professional (VirtualBox/AMD64)
 
 ![Windows XP Professional x64 Edition](images/WinXPP_x64.png)
 
