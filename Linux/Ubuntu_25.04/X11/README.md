@@ -1,4 +1,4 @@
-#Fun with X11 in Ubuntu Desktop 25.04
+# Fun with X11 in Ubuntu Desktop 25.04
 
 ### 1. Personal History
 
