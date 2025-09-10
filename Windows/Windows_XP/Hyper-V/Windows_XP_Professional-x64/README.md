@@ -35,7 +35,7 @@ A supplemental reference showing Hyper-V host releases, their Integration Servic
       - 6.0.6001.22258 (after KB956710)  
       - 6.0.6001.22352 (after KB959962)  
       - 6.0.6002.18005 (SP2)  
-      - 6.0.6002.22233 (RTM + KB975925) :contentReference[oaicite:0]{index=0}  
+      - 6.0.6002.22233 (RTM + KB975925)
   - Guest support: Windows Server 2003 SP2, Vista SP1/SP2, Windows XP SP3  
 
 - **Windows Server 2008 R2** (Hyper-V v2, 2009)  
@@ -45,7 +45,7 @@ A supplemental reference showing Hyper-V host releases, their Integration Servic
       - 6.1.7600.20542 (after KB975354)  
       - 6.1.7600.20683 (after KB981836)  
       - 6.1.7600.20778 (after KB2223005)  
-      - 6.1.7601.17514 (SP1 RTM) :contentReference[oaicite:1]{index=1}  
+      - 6.1.7601.17514 (SP1 RTM)
   - Guest support: Windows 7, Server 2008 R2, continued XP/Vista support  
 
 - **Windows Server 2012** (Hyper-V v3, 2012)  
@@ -54,25 +54,25 @@ A supplemental reference showing Hyper-V host releases, their Integration Servic
       - 6.2.9200.16384 (RTM)  
       - 6.2.9200.16433 (after KB2770917)  
       - 6.2.9200.20655 (after KB2823956)  
-      - 6.2.9200.21885 (June 2016 rollup, KB3161609) :contentReference[oaicite:2]{index=2}  
+      - 6.2.9200.21885 (June 2016 rollup, KB3161609)
   - Guest support: Windows 8, Server 2012  
 
 - **Windows Server 2012 R2** (Hyper-V v4, 2013)  
   - Integration Services 6.3 series  
     - Builds:  
       - 6.3.9600.16384 (RTM)  
-      - Incrementals via KB: 17415, 17831, 18080, 18339, 18398, 18692 (through mid-2017) :contentReference[oaicite:3]{index=3}  
-    - Notably, community reports confirm “.18398” as the July rollup build :contentReference[oaicite:4]{index=4}  
+      - Incrementals via KB: 17415, 17831, 18080, 18339, 18398, 18692 (through mid-2017)
+    - Notably, community reports confirm “.18398” as the July rollup build 
   - Guest support: Windows 8.1, Server 2012 R2 — last branch providing support for Windows XP and Server 2003  
 
 - **Windows Server 2016** (Hyper-V v5, 2016)  
-  - Integration Services reports as 10.0.x series—delivered via Windows Update, no standalone ISO needed :contentReference[oaicite:5]{index=5}  
-  - User reports show guest VMs showing version 10.0.14393.x, matching Windows 10/Server 2016 builds :contentReference[oaicite:6]{index=6}  
+  - Integration Services reports as 10.0.x series—delivered via Windows Update, no standalone ISO needed
+  - User reports show guest VMs showing version 10.0.14393.x, matching Windows 10/Server 2016 builds
   - Guest support: Windows 10 (initial releases), Server 2016  
 
 - **Windows Server 2019 & 2022** (Hyper-V v6/v7)  
   - Still using Integration Services 10.0.x, aligned with client OS releases, delivered via Windows Update  
-  - Support continues for modern Windows 10/11 builds and supported Linux distributions :contentReference[oaicite:7]{index=7}  
+  - Support continues for modern Windows 10/11 builds and supported Linux distributions
 
 ---
 
