@@ -10,7 +10,7 @@ Windows 3.0 was the hottest operating environment on the market, and I wanted in
 
 Getting Windows XP Professional x64 Edition running in Hyper-V brings me back to those days... as we will see below.
 
-## Installing in Hyper-V
+## 2.  Installing in Hyper-V
 
 Installation was done on a Windows 11 Pro host, using a Gen 1 Hyper-V VM. Since Windows XP Professional x64 Edition does not support UEFI, Gen 1 with BIOS support is the way to go. I left everything else stock, keeping the disk controller on IDE, aside from enabling Dynamic Memory which lets it scale as low as 256MB and as high as 6144MB.
 
@@ -20,7 +20,7 @@ Mount the x64 Service Pack 2 ISO (w2k3sp2_3959_usa_x64fre_spcd.iso). Use keyboar
 
 Now for the Hyper-V Integration Services. The last known compatible release for Windows XP was 6.3.9300.16384, available on Archive.org at https://archive.org/details/Hyper-V_vmguest. Just like Service Pack 2, mount the ISO. Once mounted, the installer autostarts and completes on its own, giving you mouse control before the reboot prompt. When asked to restart, click Yes, and Hyper-V Integration Services is ready to go. In addition to the mouse working, you also get snappier graphics because the Integration Services replace Hyper-V’s generic emulated VGA driver with synthetic video drivers. You also gain resolution changes and full reporting back to Hyper-V Manager — including memory usage and network information.
 
-## Updates
+## 3.  Updates
 Windows Updates, as per usual, in 2025 are provided through Legacy Update at https://legacyupdate.net
 
 ## Bonus Section: Hyper-V Guest Versions (with Build Info)
