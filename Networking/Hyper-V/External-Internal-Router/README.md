@@ -21,7 +21,7 @@ Virtual Routers and I go back to around 2002/2003 when I was going through a pha
 
 One of the reasons I enjoy networking in Hyper-V is that internal networks operate at 10 Gbps, compared to 1 Gbps in VMware Workstation. In PowerShell (my preferred method), let's create an external and an internal Hyper-V switch.
 
-# Run in an elevated PowerShell session.
+*Run the following in an elevated PowerShell session.*
 
 Get-NetAdapter
 
