@@ -12,16 +12,16 @@ Virtual Routers and I go back to around 2002/2003 when I was going through a pha
 
 - **Neighborhood HotSpot:** I wanted to give free WiFi to anyone within range as a public service. A small but fashionable omni-directional antenna in my kitchen window extended the signal throughout the area. Behind it sat a D-Link access point patched into a Sony ultrabook running NetBSD. It acted as a bridge to a PCMCIA WiFi adapter, which linked to a WiFi card inside my bedroom server bound to an OpenBSD VM router. From there, traffic was filtered, bandwidth shaped, isolated from my LAN, and pushed out through a PCI ethernet card to the internet.
 
-- **IPv6 Gateway:** My ISP offered no inbound IPv6 controls at the time, which made personal IPv6 related projects nearly impossible. To work around that, I rented a VPS with a /64 and built a TAP-based IPv4 OpenVPN tunnel to a Debian VM at home. The VPS held ::1, and I assigned ::2 to the Debian side. The tunnel’s TAP interface on Debian was bridged to a physical NIC, which I gave ::3. That address was still part of the VPS-delegated /64, but it served as the entry point into a separate subnet managed by pfSense. The NIC was pfSense’s external interface, and from there pfSense handled routing for the downstream IPv6 network. Traffic followed a clear path — ::1 to ::2 to ::3 — with pfSense in charge of everything behind it. It was more of a journey than a destination project, but it gave me valuable insights into what can and cannot be done within IPv6 in IPv4 tunnels.
+- **IPv6 Gateway:** My ISP offered no inbound IPv6 controls at the time, which made personal IPv6 related projects nearly impossible. To work around that, I rented a VPS with a /64 and built a TAP-based IPv4 OpenVPN tunnel to a Debian VM at home. The VPS held ::1, and I assigned ::2 to the Debian side. The tunnel’s TAP interface on Debian was bridged to a physical NIC, which I gave ::3. That address was still part of the VPS-delegated /64, but it served as the entry point into a separate subnet managed by pfSense. The NIC was pfSense’s external interface, and from there pfSense handled routing for the downstream IPv6 network. Traffic followed a clear path - ::1 to ::2 to ::3 - with pfSense in charge of everything behind it. It was more of a journey than a destination project, but it gave me valuable insights into what can and cannot be done within IPv6 in IPv4 tunnels.
 
 ...and so on over the decades. This Hyper-V virtual network project is really more of a stop on the side of the road while I build a virtual ecosystem behind the internal interface of this soon to be router, and could be considered a sibling of the IPv6 Gateway project, just much more simplified. No crazy subnet forwarding through OpenVPN tunnels this time. Just an external Hyper-V network switch, an internal Hyper-V switch, and IPFire as the guest operating system. Easy Peasy.
-
 
 ## 2. Virtual Networking Setup
 
 One of the reasons I enjoy networking in Hyper-V is that internal networks operate at 10 Gbps, compared to 1 Gbps in VMware Workstation. In PowerShell (my preferred method), let's create an external and an internal Hyper-V switch.
 
-*Run the following in an elevated PowerShell session.*
+```powershell
+# Run in an elevated PowerShell session.
 
 Get-NetAdapter
 
@@ -58,8 +58,9 @@ Name            SwitchType NetAdapterInterfaceDescription
 Default Switch  Internal
 iEthernet       Internal
 eEthernet       External   Realtek Gaming GbE Family Controller
+```
 
-Note: -AllowManagementOS $true ensures the host OS can continue using the NIC while it is shared with the external switch.
+Note: `-AllowManagementOS $true` ensures the host OS can continue using the NIC while it is shared with the external switch.
 
 ## 3. IPFire Setup
 
@@ -79,7 +80,8 @@ Rebooting brings us to the real setup: assigning the Red and Green (WAN/LAN) int
 
 ...but not quite. Now there’s a problem. With both an internal and external vSwitch, there’s a good chance the system will try to route through the virtual switch instead of the physical NIC. Let’s confirm that:
 
-PS C:\Users\Eric> Get-NetIPInterface | Sort-Object InterfaceMetric
+```powershell
+Get-NetIPInterface | Sort-Object InterfaceMetric
 
 ifIndex InterfaceAlias                  AddressFamily NlMtu(Bytes) InterfaceMetric Dhcp     ConnectionState PolicyStore
 ------- --------------                  ------------- ------------ --------------- ----     --------------- -----------
@@ -103,6 +105,7 @@ ifIndex InterfaceAlias                  AddressFamily NlMtu(Bytes) InterfaceMetr
 1       Loopback Pseudo-Interface 1     IPv6            4294967295              75 Disabled Connected       ActiveStore
 37      vEthernet (Default Switch)      IPv6                  1500            5000 Enabled  Connected       ActiveStore
 37      vEthernet (Default Switch)      IPv4                  1500            5000 Disabled Connected       ActiveStore
+```
 
 ...and yes, vEthernet (iEthernet) takes priority over Ethernet 5, my physical interface. That leaves three options:
 
@@ -112,16 +115,17 @@ ifIndex InterfaceAlias                  AddressFamily NlMtu(Bytes) InterfaceMetr
 
 Changing the interface metric sounds more fun. So let's lower Ethernet 5’s metric from 25 to 10.
 
-PS C:\Users\Eric> Set-NetIPInterface -InterfaceAlias "Ethernet 5" -InterfaceMetric 10
+```powershell
+Set-NetIPInterface -InterfaceAlias "Ethernet 5" -InterfaceMetric 10
 
-PS C:\Users\Eric> Get-NetIPInterface "Ethernet 5" | Sort-Object InterfaceMetric
+Get-NetIPInterface "Ethernet 5" | Sort-Object InterfaceMetric
 
 ifIndex InterfaceAlias                  AddressFamily NlMtu(Bytes) InterfaceMetric Dhcp     ConnectionState PolicyStore
 ------- --------------                  ------------- ------------ --------------- ----     --------------- -----------
 30      Ethernet 5                      IPv4                  1500              10 Disabled Connected       ActiveStore
 30      Ethernet 5                      IPv6                  1500              10 Enabled  Connected       ActiveStore
 
-PS C:\Users\Eric> Get-NetIPInterface | Sort-Object InterfaceMetric
+Get-NetIPInterface | Sort-Object InterfaceMetric
 
 ifIndex InterfaceAlias                  AddressFamily NlMtu(Bytes) InterfaceMetric Dhcp     ConnectionState PolicyStore
 ------- --------------                  ------------- ------------ --------------- ----     --------------- -----------
@@ -132,18 +136,6 @@ ifIndex InterfaceAlias                  AddressFamily NlMtu(Bytes) InterfaceMetr
 5       vEthernet (iEthernet)           IPv4                  1500              15 Enabled  Connected       ActiveStore
 5       vEthernet (iEthernet)           IPv6                  1500              15 Enabled  Connected       ActiveStore
 25      vEthernet (eEthernet)           IPv4                  1500              25 Disabled Connected       ActiveStore
+```
 
 ...and with that, everything is ready to go.
-
-
-
-
-
-
-
-
-
-
-
-
-
