@@ -1,4 +1,4 @@
-Mac OS X 10.4 (QEMU/PowerPC)
+# Mac OS X 10.4 (QEMU/PowerPC)
 
 ![Mac OS X 10.4 Tiger](images/Mac_OS_X_10_4.png)
 
