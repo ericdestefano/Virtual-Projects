@@ -271,3 +271,62 @@ Apple's archived release documentation and security advisories:
 - [10.5.7 security changes](https://support.apple.com/en-ie/104129)
 - [10.5.8 update](https://support.apple.com/de-de/106460)
 - [10.5.8 security changes](https://support.apple.com/de-de/104141)
+
+---
+
+### 3. Installation
+
+The preparation work for installing Mac OS X 10.5 Leopard under QEMU is largely the same as it was for Mac OS X 10.4 Tiger.
+
+Assuming \`qemu-system-ppc\` is already installed, we'll start by creating the qcow2 image that will serve as our virtual hard disk.
+
+\`\`\`bash
+qemu-img create -f qcow2 MacOSX105.qcow2 40G
+\`\`\`
+
+**Note:** The installation size of Mac OS X 10.5 is significantly larger than that of 10.4, hence the increase to 40GB.
+
+As with my other QEMU installations, I use batch files or shell scripts to start the VM, depending on the host operating system.
+
+#### Batch File Version
+
+**start-cd.bat**
+
+\`\`\`batch
+"C:\Program Files\qemu\qemu-system-ppc.exe" ^
+     -L pc-bios -M mac99,via=pmu -m 2048M ^
+     -g 1024x768x32 ^
+     -boot d ^
+     -hda MacOSX105.qcow2 ^
+     -cdrom "MacOSX105.iso" ^
+     -netdev tap,ifname=TAP0,id=network0 -device sungem,netdev=network0
+\`\`\`
+
+#### Shell Version
+
+**start-cd.sh**
+
+\`\`\`bash
+#!/bin/sh
+qemu-system-ppc \
+-L pc-bios -M mac99,via=pmu -m 2048M \
+-display gtk -g 1024x768x32 \
+-boot d \
+-hda MacOSX105.qcow2 \
+-cdrom "MacOSX105.iso"
+#-netdev tap,ifname=TAP0,id=network0 -device sungem,netdev=network0
+\`\`\`
+
+Starting QEMU, the installation ISO boots happily into a very polished language selection screen, followed by a Welcome screen where, I must admit, I have never actually clicked **More Information**.
+
+Continuing through the obligatory license agreement, we're presented with no disks available for installation. A quick stop at **Utilities → Disk Utility** allows us to erase the 40GB virtual hard disk without having to partition it as a separate preliminary step.
+
+Unlike my experience installing 10.4, **Mac OS Extended (Journaled)** is already selected as the default filesystem, while **Install Mac OS 9 Disk Drivers** remains unchecked. I'll name the volume **QEMU HD** and erase it.
+
+Exiting Disk Utility, our newly formatted QEMU HD is now available as an installation destination.
+
+Continuing to the **Install Summary** screen, I can reduce the installation footprint by deselecting **Printer Drivers** and **Language Translations**, bringing the required disk space down to approximately 6.1GB.
+
+I'm happily leaving **X11** selected, which, if anything, lends psychological credence to the notion that I am, in fact, using a UNIX-based workstation.
+
+And off we go.
