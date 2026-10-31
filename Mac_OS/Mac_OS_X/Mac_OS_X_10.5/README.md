@@ -278,11 +278,11 @@ Apple's archived release documentation and security advisories:
 
 The preparation work for installing Mac OS X 10.5 Leopard under QEMU is largely the same as it was for Mac OS X 10.4 Tiger.
 
-Assuming \`qemu-system-ppc\` is already installed, we'll start by creating the qcow2 image that will serve as our virtual hard disk.
+Assuming `qemu-system-ppc` is already installed, we'll start by creating the qcow2 image that will serve as our virtual hard disk.
 
-\`\`\`bash
+```bash
 qemu-img create -f qcow2 MacOSX105.qcow2 40G
-\`\`\`
+```
 
 **Note:** The installation size of Mac OS X 10.5 is significantly larger than that of 10.4, hence the increase to 40GB.
 
@@ -292,30 +292,38 @@ As with my other QEMU installations, I use batch files or shell scripts to start
 
 **start-cd.bat**
 
-\`\`\`batch
+```batch
 "C:\Program Files\qemu\qemu-system-ppc.exe" ^
-     -L pc-bios -M mac99,via=pmu -m 2048M ^
-     -g 1024x768x32 ^
-     -boot d ^
-     -hda MacOSX105.qcow2 ^
-     -cdrom "MacOSX105.iso" ^
-     -netdev tap,ifname=TAP0,id=network0 -device sungem,netdev=network0
-\`\`\`
+    -L pc-bios ^
+    -M mac99,via=pmu ^
+    -m 2048M ^
+    -g 1024x768x32 ^
+    -boot d ^
+    -hda MacOSX105.qcow2 ^
+    -cdrom "MacOSX105.iso" ^
+    -netdev tap,ifname=TAP0,id=network0 ^
+    -device sungem,netdev=network0
+```
 
 #### Shell Version
 
 **start-cd.sh**
 
-\`\`\`bash
+```bash
 #!/bin/sh
+
 qemu-system-ppc \
--L pc-bios -M mac99,via=pmu -m 2048M \
--display gtk -g 1024x768x32 \
--boot d \
--hda MacOSX105.qcow2 \
--cdrom "MacOSX105.iso"
+    -L pc-bios \
+    -M mac99,via=pmu \
+    -m 2048M \
+    -display gtk \
+    -g 1024x768x32 \
+    -boot d \
+    -hda MacOSX105.qcow2 \
+    -cdrom "MacOSX105.iso"
+
 #-netdev tap,ifname=TAP0,id=network0 -device sungem,netdev=network0
-\`\`\`
+```
 
 Starting QEMU, the installation ISO boots happily into a very polished language selection screen, followed by a Welcome screen where, I must admit, I have never actually clicked **More Information**.
 
