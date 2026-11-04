@@ -353,7 +353,7 @@ Fortunately, in this case, the operating system appears to have been installed s
 
 The solution is relatively simple. Rather than clicking **Restart** on the installation failure screen, I open **Utilities → Startup Disk**, select **Mac OS X 10.5 on QEMU HD**, and click **Restart**.
 
-![Selecting QEMU HD in the Startup Disk utility](images/leopard-startup-disk.webp)
+![Selecting QEMU HD in the Startup Disk utility](images/leopard-startup-disk-full.webp)
 
 Once the virtual machine restarts, I can shut down QEMU and switch to my hard disk startup scripts.
 
