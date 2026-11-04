@@ -338,3 +338,23 @@ Continuing to the **Install Summary** screen, I can reduce the installation foot
 I'm happily leaving **X11** selected, which, if anything, lends psychological credence to the notion that I am, in fact, using a UNIX-based workstation.
 
 And off we go.
+
+Installation takes considerably longer than its Intel counterpart, approximately an hour in my case when emulating PowerPC hardware on a modern system.
+
+Unfortunately, when the installation completes, I'm greeted with an **Installation Failed** message, informing me that the installer could not configure **QEMU HD** as the startup volume.
+
+This is a problem I've encountered in various forms over the years on both PowerPC and Intel-based Macs. Both architectures rely on firmware settings to identify the preferred startup volume, although PowerPC uses Open Firmware while Intel Macs use EFI.
+
+On PowerPC systems, Open Firmware normally consults the `boot-device` variable stored in NVRAM to locate the startup disk. If that information is missing or incorrect, the firmware must locate another bootable device, which isn't always successful, particularly under emulation.
+
+On Intel-based Macs, I've experienced something similar, although the result was usually an extraordinarily long pause while the firmware searched for a bootable volume.
+
+Fortunately, in this case, the operating system appears to have been installed successfully. What failed was the final step of configuring the startup volume.
+
+The solution is relatively simple. Rather than clicking **Restart** on the installation failure screen, I open **Utilities → Startup Disk**, select **Mac OS X 10.5 on QEMU HD**, and click **Restart**.
+
+![Selecting QEMU HD in the Startup Disk utility](images/leopard-startup-disk.webp)
+
+Once the virtual machine restarts, I can shut down QEMU and switch to my hard disk startup scripts.
+
+With that, the installation is complete.
