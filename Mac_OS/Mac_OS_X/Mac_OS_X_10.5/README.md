@@ -358,3 +358,54 @@ The solution is relatively simple. Rather than clicking **Restart** on the insta
 Once the virtual machine restarts, I can shut down QEMU and switch to my hard disk startup scripts.
 
 With that, the installation is complete.
+
+---
+
+### 4. Post Installation
+
+After a lengthy installation, despite all the components I had deselected, it's time to switch to the hard disk variants of my startup scripts and boot directly from the virtual hard drive.
+
+#### Batch File Version
+
+**start-hdd.bat**
+
+```batch
+"C:\Program Files\qemu\qemu-system-ppc.exe" ^
+    -L pc-bios ^
+    -M mac99,via=pmu ^
+    -m 2048M ^
+    -g 1024x768x32 ^
+    -boot c ^
+    -hda MacOSX105.qcow2 ^
+    -netdev tap,ifname=TAP0,id=network0 ^
+    -device sungem,netdev=network0
+
+REM -cdrom "MacOSX105.iso"
+```
+
+#### Shell Version
+
+**start-hdd.sh**
+
+```bash
+#!/bin/sh
+
+qemu-system-ppc \
+    -L pc-bios \
+    -M mac99,via=pmu \
+    -m 2048M \
+    -display gtk \
+    -g 1024x768x32 \
+    -boot c \
+    -hda MacOSX105.qcow2 \
+    -netdev tap,ifname=tap0,id=network0 \
+    -device sungem,netdev=network0
+
+# -cdrom "MacOSX105.iso"
+```
+
+Booting from the virtual hard disk, Mac OS X 10.5 presents us with the familiar Setup Assistant, guiding us through a series of screens for configuring our region, language, keyboard, and user account.
+
+For longtime Mac OS X 10.4 users, one of the first noticeable additions is found on the **Do You Already Own a Mac?** screen, which now offers the option to transfer information from a **Time Machine backup**, a feature introduced with Leopard.
+
+Otherwise, much of the experience remains remarkably familiar. The **Internet Connection**, **Enter Your Apple ID**, **Registration Information**, and **Account Creation** screens have changed relatively little, following much the same setup process Apple had established with the earliest releases of Mac OS X.
